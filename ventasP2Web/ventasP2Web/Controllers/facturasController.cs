@@ -182,15 +182,18 @@ namespace ventasP2Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var a = db.cuentaPorCobrar.Where(p => p.facturaID == id);
-            if (a != null)
+            if (a.Count() > 0)
             {
                 ViewData["error1"] = "Esta factura tiene cuentas por cobrar relacionadas";
             }
             var b = db.lineaFactura.Where(p => p.facturaID == id);
-            if (a!=null || b != null)
+            if(b.Count() > 0)
+            {
+                ViewData["error2"] = "Esta factura tiene lineas facturas relacionadas";
+            }
+            if (a.Count() > 0 || b.Count() > 0)
             {
                 factura e = db.factura.Find(id);
-                ViewData["error2"] = "Esta factura tiene lineas facturas relacionadas";
                 return View("delete", e);
             }
 

@@ -31,12 +31,13 @@ namespace ventasP2Web.Models
         [DisplayName("Segundo apellido")]
         public string apellido2 { get; set; }
         public Nullable<int> telefono { get; set; }
+        [EmailAddress]
         public string correo { get; set; }
         public string residencia { get; set; }
         [StringLength(4, MinimumLength = 4)]
         public string puesto { get; set; }
-        [DisplayName("Fecha de nacimiento")]
         [DataType(DataType.Date)]
+        [DisplayName("Fecha de nacimiento")]
         public Nullable<System.DateTime> fechaNacimiento { get; set; }
         [DisplayName("Fecha de ingreso")]
         [DataType(DataType.Date)]

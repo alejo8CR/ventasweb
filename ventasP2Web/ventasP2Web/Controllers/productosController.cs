@@ -54,6 +54,10 @@ namespace ventasP2Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SKU,descripcion,costo,precioVenta,stock,impuesto")] producto producto)
         {
+            var p = db.producto.Find(producto.SKU);
+            if (p != null)
+                ModelState.AddModelError("SKU", "SKU no permitido");
+
             if (ModelState.IsValid)
             {
                 db.producto.Add(producto);
@@ -116,7 +120,7 @@ namespace ventasP2Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var a = db.lineaPedido.Where(p => p.productoID == id);
-            if (a != null)
+            if (a.Count() > 0)
             {
                 producto e = db.producto.Find(id);
                 ViewData["error"] = "Este producto tiene pedidos relacionados";

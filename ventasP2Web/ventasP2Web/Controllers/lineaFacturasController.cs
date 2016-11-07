@@ -52,9 +52,9 @@ namespace ventasP2Web.Controllers
         }
 
         // GET: lineaFacturas/Create
-        public ActionResult Create()
+        public ActionResult Create(string factura)
         {
-            ViewBag.facturaID = new SelectList(db.factura, "facturaID", "facturaID");
+            ViewBag.facturaID = new SelectList(db.factura, "facturaID", "facturaID", factura);
             ViewBag.lineaPedidoID = new SelectList(db.lineaPedido.Where(p => p.pedido.estado == "CONFIRMADO"), "lineaPedidoID", "lineaPedidoID");
             return View();
         }

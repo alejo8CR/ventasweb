@@ -178,7 +178,7 @@ namespace ventasP2Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var a = db.lineaFactura.Where(p => p.lineaPedidoID == id);
-            if (a != null)
+            if (a.Count() > 0)
             {
                 lineaPedido e = db.lineaPedido.Find(id);
                 ViewData["error"] = "Esta linea pedido tiene facturas relacionadas";

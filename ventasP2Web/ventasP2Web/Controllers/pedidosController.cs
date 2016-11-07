@@ -299,7 +299,7 @@ namespace ventasP2Web.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             var lineapedidos = db.lineaPedido.Where(p => p.pedidoID == id);
-            if (lineapedidos != null)
+            if (lineapedidos.Count() > 0)
             {
                 pedido e = db.pedido.Find(id);
                 ViewData["error"] = "Este pedido tiene productos asociados";

@@ -33,6 +33,7 @@ namespace ventasP2Web.Models
         public Nullable<double> precioVenta { get; set; }
         [Required]
         public Nullable<int> stock { get; set; }
+        [Required]
         public Nullable<double> impuesto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -39,6 +39,7 @@ namespace ventasP2Web.Models
         [EmailAddress]
         public string correo { get; set; }
         [DisplayName("Fecha Inicio")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> fechaInicio { get; set; }
     
         public virtual metodoPago metodoPago { get; set; }

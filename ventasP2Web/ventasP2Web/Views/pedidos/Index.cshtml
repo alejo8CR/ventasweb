@@ -69,8 +69,11 @@
             @ViewBag.facturacion[i]
         </td>
         <td>
-            @Html.ActionLink("Detalles", "Details", new { id = (item.pedidoID.Replace(" ",string.Empty)) }) |
-            @Html.ActionLink("Asociar Productos", "Create", "lineaPedidos", new { pedido = (item.pedidoID.Replace(" ", string.Empty)) }, "") |
+            @Html.ActionLink("Detalles", "Details", new { id = (item.pedidoID.Replace(" ", string.Empty)) }) |
+            @if (item.estado.Replace(" ", string.Empty) != "RECHAZADO" && item.estado.Replace(" ", string.Empty) != "CANCELADO")
+            {
+                @Html.ActionLink("Asociar Productos", "Create", "lineaPedidos", new { pedido = item.pedidoID }, "")
+            }
             @if (item.estado.Replace(" ", string.Empty) != "REVISADO")
             {
                 if (item.estado.Replace(" ", string.Empty) != "RECHAZADO")
@@ -79,7 +82,8 @@
                 }
                 @Html.ActionLink(" | Delete", "Delete", new { id = (item.pedidoID.Replace(" ", string.Empty)) })
             }
-            else{
+            else
+            {
                 @Html.ActionLink(" | CANCELAR", "cancelar", new { id = (item.pedidoID.Replace(" ", string.Empty)) })
             }
         </td>

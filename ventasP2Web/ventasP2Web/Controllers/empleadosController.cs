@@ -118,7 +118,7 @@ namespace ventasP2Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var pedidos = db.pedido.Where(p => p.empleadoID == id);
-            if (pedidos != null)
+            if (pedidos.Count() > 0)
             {
                 empleado e = db.empleado.Find(id);
                 ViewData["error"] = "Este empleado tiene pedidos";

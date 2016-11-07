@@ -122,7 +122,7 @@ namespace ventasP2Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var pedidos = db.pedido.Where(p => p.clienteID == id);
-            if (pedidos != null)
+            if (pedidos.Count()>0)
             {
                 cliente e = db.cliente.Find(id);
                 ViewData["error"] = "Este cliente tiene pedidos relacionados";
