@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4056edd90d2747d09b7fca21327e8175" Name="Diagram1">
+        <EntityTypeShape EntityType="ventasBDModel.cliente" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasBDModel.cuentaPorCobrar" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasBDModel.empleado" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasBDModel.factura" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasBDModel.lineaFactura" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasBDModel.lineaPedido" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasBDModel.metodoPago" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasBDModel.pedido" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasBDModel.producto" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasBDModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ventasBDModel.FK_cliente_metodoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasBDModel.FK_factura_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasBDModel.FK_pedido_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasBDModel.FK_cuentaPorCobrar_factura" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasBDModel.FK_pedido_empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasBDModel.FK_lineaFactura_factura" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasBDModel.FK_lineaFactura_lineaPedido" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasBDModel.FK_lineaPedido_pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasBDModel.FK_lineaPedido_producto" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasBDModel.jefeXEmpleado" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

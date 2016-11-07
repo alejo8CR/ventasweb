@@ -1,0 +1,56 @@
+﻿@model ventasP2Web.Models.cuentaPorCobrar
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>cuentaPorCobrar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.totalImpuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalImpuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalAPagar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalAPagar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPagado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalPagado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.factura.facturaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.factura.facturaID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index","facturas")
+        </div>
+    }
+</div>

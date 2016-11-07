@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ventasP2Web.Models.lineaPedido>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Productos por pedidos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lineaPedidoID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pedido.pedidoID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precioVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descuento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.impuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precioTotal)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.producto.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.lineaPedidoID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pedido.pedidoID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precioVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descuento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.impuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precioTotal)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.producto.descripcion)
+        </td>
+        <td>
+            <!--@Html.ActionLink("Edit", "Edit", new { id=item.lineaPedidoID }) |-->
+            @Html.ActionLink("Details", "Details", new { id=item.lineaPedidoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.lineaPedidoID })
+        </td>
+    </tr>
+}
+
+</table>

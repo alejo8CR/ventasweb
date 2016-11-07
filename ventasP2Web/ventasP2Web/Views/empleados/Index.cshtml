@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ventasP2Web.Models.empleado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Empleados Ejecutivos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.empleadoID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.residencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.puesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaRetiro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.empleadoID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.residencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.puesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaRetiro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.empleadoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.empleadoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.empleadoID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,105 @@
+﻿@model ventasP2Web.Models.cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles cliente</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.clienteID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clienteID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigoPostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigoPostal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.limiteCredito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.limiteCredito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccionFisica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccionFisica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.metodoPago.condicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.metodoPago.condicion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.clienteID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

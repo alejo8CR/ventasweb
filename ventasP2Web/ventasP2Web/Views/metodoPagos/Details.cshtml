@@ -1,0 +1,26 @@
+﻿@model ventasP2Web.Models.metodoPago
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>metodoPago</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.condicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.condicion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.metodoPagoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

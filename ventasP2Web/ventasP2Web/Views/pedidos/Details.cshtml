@@ -1,0 +1,71 @@
+﻿@model ventasP2Web.Models.pedido
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcionEstado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcionEstado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.clienteID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.empleado.empleadoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empleado.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pedidoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div>
+    <h4>Detalle Pedido</h4>
+    @{ Html.RenderAction("detallePedido", new { id = Model.pedidoID }); }
+</div>
+

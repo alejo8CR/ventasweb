@@ -1,0 +1,50 @@
+﻿@model ventasP2Web.Models.cuentaPorCobrar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cuentaPorCobrar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.facturaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.facturaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalImpuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalImpuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalAPagar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalAPagar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPagado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalPagado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Eliminar", "Delete", new { id = Model.cuentaPorCobrar1 }) |
+    @Html.ActionLink("Back to List", "Index","facturas")
+</p>

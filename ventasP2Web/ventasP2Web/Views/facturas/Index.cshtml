@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ventasP2Web.Models.factura>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Facturas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @Html.ActionLink("Ver lineas de facturas", "Index", "lineaFacturas", "", "")
+</p>
+<br />
+<form asp-controller="facturas" asp-action="Index" method="get">
+    <p>
+        Fecha: <input type="text" name="fecha" id="fecha">
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+<br />
+<p style="color:red">@ViewData["error"]</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.facturaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.clienteID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaVencimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccionEntrega)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.facturaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaVencimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccionEntrega)
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "Details", new { id = item.facturaID }) |
+            @Html.ActionLink("Facturar Pedidos", "Create", "lineaFacturas", new { factura = (item.facturaID) }, "") |
+            @Html.ActionLink("Cuenta por cobrar", "Details", "cuentasPorCobrar", new { id="", idfactura = item.facturaID }, "") |
+            @Html.ActionLink("Edit", "Edit", new { id=item.facturaID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.facturaID })
+        </td>
+    </tr>
+}
+
+</table>

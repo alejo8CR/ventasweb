@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ventasP2Web.Models.cuentaPorCobrar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cuentas por cobrar</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.factura.facturaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.factura.clienteID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalImpuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalAPagar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalPagado)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.factura.facturaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.factura.clienteID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalImpuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalAPagar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalPagado)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cuentaPorCobrar1 }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cuentaPorCobrar1 }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cuentaPorCobrar1 })
+        </td>
+    </tr>
+}
+
+</table>

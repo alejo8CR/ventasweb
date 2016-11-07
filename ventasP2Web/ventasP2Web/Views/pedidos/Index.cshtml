@@ -1,0 +1,90 @@
+﻿@model IEnumerable<ventasP2Web.Models.pedido>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pedidos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @Html.ActionLink("Ver productos por pedidos", "Index","lineaPedidos","","")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pedidoID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaEntrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcionEstado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.clienteID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empleado.empleadoID)
+        </th>
+        <th>
+            Facturación
+        </th>
+        <th></th>
+    </tr>
+
+@{ int i = 0; }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pedidoID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaEntrega)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcionEstado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empleado.nombre)
+        </td>
+        <td>
+            @ViewBag.facturacion[i]
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "Details", new { id = (item.pedidoID.Replace(" ",string.Empty)) }) |
+            @Html.ActionLink("Asociar Productos", "Create", "lineaPedidos", new { pedido = (item.pedidoID.Replace(" ", string.Empty)) }, "") |
+            @if (item.estado.Replace(" ", string.Empty) != "REVISADO")
+            {
+                if (item.estado.Replace(" ", string.Empty) != "RECHAZADO")
+                {
+                    @Html.ActionLink(" | Edit", "Edit", new { id = (item.pedidoID.Replace(" ", string.Empty)) })
+                }
+                @Html.ActionLink(" | Delete", "Delete", new { id = (item.pedidoID.Replace(" ", string.Empty)) })
+            }
+            else{
+                @Html.ActionLink(" | CANCELAR", "cancelar", new { id = (item.pedidoID.Replace(" ", string.Empty)) })
+            }
+        </td>
+    </tr>
+   i = i + 1;
+}
+
+</table>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ventasP2Web.Models.metodoPago>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Metodos de pago</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.condicion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.condicion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.metodoPagoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.metodoPagoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.metodoPagoID })
+        </td>
+    </tr>
+}
+
+</table>

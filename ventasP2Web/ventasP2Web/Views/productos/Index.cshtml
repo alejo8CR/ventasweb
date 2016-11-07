@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ventasP2Web.Models.producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Productos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SKU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precioVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.impuesto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SKU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.costo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precioVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.impuesto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SKU }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SKU }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SKU })
+        </td>
+    </tr>
+}
+
+</table>

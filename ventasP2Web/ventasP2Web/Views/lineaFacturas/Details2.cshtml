@@ -1,0 +1,82 @@
+﻿@model ventasP2Web.Models.lineaFactura
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>lineaFactura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadFacturada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadFacturada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalDescuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalDescuento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalImpuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalImpuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPagar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalPagar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.factura.direccionEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.factura.direccionEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lineaPedido.pedidoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lineaPedido.pedidoID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <!--@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |-->
+    @Html.ActionLink("Back to List", "Index","facturas")
+</p>

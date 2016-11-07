@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ventasP2Web.Models.lineaFactura>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lineas facturas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.facturaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lineaPedido.lineaPedidoID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidadFacturada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subtotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalDescuento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalImpuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalPagar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.factura.direccionEntrega)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.facturaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lineaPedido.lineaPedidoID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadFacturada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subtotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalDescuento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalImpuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalPagar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.factura.direccionEntrega)
+        </td>
+        <td>
+            <!--@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |-->
+            @Html.ActionLink("Details", "Details", new { id=item.lineaFacturaID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.lineaFacturaID })
+        </td>
+    </tr>
+}
+
+</table>

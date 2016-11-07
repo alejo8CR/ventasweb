@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ventasP2Web.Models.pedido>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pedidos por Cliente</h2>
+
+<br />
+<form asp-controller="pedidos" asp-action="IndexCliente" method="get">
+    <p>
+        Nombre Cliente: <input type="text" name="SearchString" id="searchstring">
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pedidoID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaEntrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcionEstado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empleado.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pedidoID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaEntrega)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcionEstado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empleado.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "DetailsCliente", new { id = (item.pedidoID.Replace(" ", string.Empty)) }) |
+            @if (item.estado.Replace(" ", string.Empty) == "REVISADO") { 
+                @Html.ActionLink("CONFIRMAR", "confirmar", new { id= (item.pedidoID.Replace(" ", string.Empty)) })
+                @Html.ActionLink(" | RECHAZAR", "rechazar", new { onclick = "msj();", id = (item.pedidoID.Replace(" ", string.Empty)) })
+                @Html.ActionLink(" | REPROCESAR", "reprocesar", new { id= (item.pedidoID.Replace(" ", string.Empty)) })
+            }
+        </td>
+    </tr>
+}
+
+</table>
+
+@section Scripts
+{
+    <script>
+        function msj() {
+            var person = prompt("Por favor indique el motivo: ", "");
+        }
+    </script>
+}
