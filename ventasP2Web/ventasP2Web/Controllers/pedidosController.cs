@@ -66,6 +66,7 @@ namespace ventasP2Web.Controllers
             {
                 pedido = db.pedido.Include(p => p.cliente).Include(p => p.empleado).Where(p => p.cliente.nombre == searchString && p.estado != "CANCELADO").OrderByDescending(p => p.estado);
             }
+            ViewBag.motivo = "123";
             return View(pedido.ToList());
         }
 
@@ -74,8 +75,8 @@ namespace ventasP2Web.Controllers
             var lineaPedido = db.lineaPedido.Include(l => l.pedido).Include(l => l.producto).Where(l => l.pedidoID == id);
             return PartialView(lineaPedido.ToList());
         }
-
-        public ActionResult confirmar(string id)
+        
+        public ActionResult confirmar(string id, string motivo)
         {
             try
             {
@@ -88,7 +89,7 @@ namespace ventasP2Web.Controllers
             return RedirectToAction("IndexCliente");
         }
 
-        public ActionResult rechazar(string id)
+        public ActionResult rechazar(string id, string motivo)
         {
             try
             {
@@ -101,7 +102,7 @@ namespace ventasP2Web.Controllers
             return RedirectToAction("IndexCliente");
         }
 
-        public ActionResult reprocesar(string id)
+        public ActionResult reprocesar(string id, string motivo)
         {
             try
             {
