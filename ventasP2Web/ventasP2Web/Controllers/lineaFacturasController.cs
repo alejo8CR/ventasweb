@@ -66,6 +66,9 @@ namespace ventasP2Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "facturaID,lineaPedidoID,cantidadFacturada,descripcion,subtotal,totalDescuento,totalImpuesto,totalPagar")] lineaFactura lineaFactura)
         {
+            if (lineaFactura.lineaPedidoID == 0)
+                ModelState.AddModelError("lineaPedidoID", "No productos confirmados para facturar");
+
             try
             {
                 int cantidadFacturada = (int)db.lineaFactura.Where(a => a.lineaPedidoID == lineaFactura.lineaPedidoID).Sum(a => a.cantidadFacturada);
@@ -76,8 +79,6 @@ namespace ventasP2Web.Controllers
                     ModelState.AddModelError("cantidadFacturada", "Cantidad a facturar supera la cantidad restante por facturar de la linea pedido");
             }
             catch (Exception e) { }
-            if(lineaFactura.lineaPedidoID==0)
-                ModelState.AddModelError("lineaPedidoID", "No productos confirmados para facturar");
 
             if (ModelState.IsValid)
             {

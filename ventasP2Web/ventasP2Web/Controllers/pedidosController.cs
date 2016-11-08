@@ -66,7 +66,6 @@ namespace ventasP2Web.Controllers
             {
                 pedido = db.pedido.Include(p => p.cliente).Include(p => p.empleado).Where(p => p.cliente.nombre == searchString && p.estado != "CANCELADO").OrderByDescending(p => p.estado);
             }
-            ViewBag.motivo = "123";
             return View(pedido.ToList());
         }
 
@@ -75,8 +74,8 @@ namespace ventasP2Web.Controllers
             var lineaPedido = db.lineaPedido.Include(l => l.pedido).Include(l => l.producto).Where(l => l.pedidoID == id);
             return PartialView(lineaPedido.ToList());
         }
-        
-        public ActionResult confirmar(string id, string motivo)
+
+        public ActionResult confirmar(string id)
         {
             try
             {
@@ -95,6 +94,7 @@ namespace ventasP2Web.Controllers
             {
                 var pedido = db.pedido.Where(p => p.pedidoID == id).First();
                 pedido.estado = "RECHAZADO";
+                pedido.descripcionEstado = motivo;
                 db.Entry(pedido).State = EntityState.Modified;
                 db.SaveChanges();
             }
@@ -108,6 +108,7 @@ namespace ventasP2Web.Controllers
             {
                 var pedido = db.pedido.Where(p => p.pedidoID == id).First();
                 pedido.estado = "REPROCESAR";
+                pedido.descripcionEstado = motivo;
                 db.Entry(pedido).State = EntityState.Modified;
                 db.SaveChanges();
             }
@@ -115,12 +116,13 @@ namespace ventasP2Web.Controllers
             return RedirectToAction("IndexCliente");
         }
 
-        public ActionResult cancelar(string id)
+        public ActionResult cancelar(string id, string motivo)
         {
             try
             {
                 var pedido = db.pedido.Where(p => p.pedidoID == id).First();
                 pedido.estado = "CANCELADO";
+                pedido.descripcionEstado = motivo;
                 db.Entry(pedido).State = EntityState.Modified;
                 db.SaveChanges();
 

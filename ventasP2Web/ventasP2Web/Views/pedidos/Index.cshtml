@@ -12,6 +12,7 @@
 <p>
     @Html.ActionLink("Ver productos por pedidos", "Index","lineaPedidos","","")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -82,9 +83,9 @@
                 }
                 @Html.ActionLink(" | Delete", "Delete", new { id = (item.pedidoID.Replace(" ", string.Empty)) })
             }
-            else
+            @if (item.estado.Replace(" ", string.Empty) != "CANCELADO")
             {
-                @Html.ActionLink(" | CANCELAR", "cancelar", new { id = (item.pedidoID.Replace(" ", string.Empty)) })
+                <a href="" onclick="myFunction1(this)" data-assigned-id="@item.pedidoID.Replace(" ", string.Empty)">CANCELAR</a>
             }
         </td>
     </tr>
@@ -92,3 +93,21 @@
 }
 
 </table>
+
+@section Scripts {
+    <script>
+        function myFunction1(elem) {
+            var id = $(elem).data('assigned-id');
+            var texto = prompt("Indique el motivo de la cancelacion:\n\nIMPORTANTE! Refresque la pagina despues de Aceptar");
+            if (texto != null) {
+                $.ajax({
+                    url: '@Url.Action("cancelar")',
+                    type: 'GET',
+                    data: { id: id, motivo:texto },
+                    success: function (result) {
+                    }
+                });
+            }
+        }
+    </script>
+}
