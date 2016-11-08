@@ -33,14 +33,18 @@
             @Html.DisplayNameFor(model => model.descripcionEstado)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cliente.nombre)
+            @Html.DisplayNameFor(model => model.cliente.clienteID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.empleado.nombre)
+            @Html.DisplayNameFor(model => model.empleado.empleadoID)
+        </th>
+        <th>
+            Facturación
         </th>
         <th></th>
     </tr>
 
+@{ int i = 0; }
 @foreach (var item in Model)
 {
     <tr>
@@ -66,6 +70,9 @@
             @Html.DisplayFor(modelItem => item.empleado.nombre)
         </td>
         <td>
+            @ViewBag.facturacion[i]
+        </td>
+        <td>
             @Html.ActionLink("Detalles", "DetailsCliente", new { id = (item.pedidoID.Replace(" ", string.Empty)) }) |
             @if (item.estado.Replace(" ", string.Empty) == "REVISADO")
             {
@@ -78,6 +85,7 @@
             }
         </td>
     </tr>
+    i = i + 1;
 }
 
 </table>

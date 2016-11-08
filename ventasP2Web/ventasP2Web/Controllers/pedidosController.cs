@@ -19,6 +19,7 @@ namespace ventasP2Web.Controllers
         // GET: pedidos
         public ActionResult Index()
         {
+            //Para saber si esta facturado parcialmente o no
             int sum1 = 0,sum2=0;
             List<string> lista = new List<string>();
             var pedidos = db.pedido.Include(p => p.cliente).Include(p => p.empleado).OrderBy(p=>p.pedidoID);
@@ -61,12 +62,43 @@ namespace ventasP2Web.Controllers
         // GET: pedidos
         public ActionResult IndexCliente(string searchString)
         {
-            var pedido = db.pedido.Where(p => p.cliente.nombre == searchString);
+            int sum1 = 0, sum2 = 0;
+            List<string> lista = new List<string>();
+            var pedidos = db.pedido.Include(p => p.cliente).Include(p => p.empleado).Where(p => p.cliente.nombre == searchString);
+
+            try
+            {
+                foreach (pedido p in pedidos)
+                {
+                    sum1 = 0; sum2 = 0;
+                    var sumlineapedidos = db.lineaPedido.Where(l => l.pedidoID == p.pedidoID).Sum(l => l.cantidad);
+                    if (sumlineapedidos != null)
+                        sum1 = (int)sumlineapedidos;
+
+                    var lineapedidos = db.lineaPedido.Where(l => l.pedidoID == p.pedidoID);
+                    foreach (lineaPedido lp in lineapedidos)
+                    {
+                        var sumlineafacturas = db.lineaFactura.Where(l => l.lineaPedido.lineaPedidoID == lp.lineaPedidoID).Sum(l => l.cantidadFacturada);
+                        if (sumlineafacturas != null)
+                            sum2 += (int)sumlineafacturas;
+                    }
+                    if (sum2 == 0)
+                        lista.Add("VACIA");
+                    else if (sum2 < sum1)
+                        lista.Add("PARCIALMENTE");
+                    else
+                        lista.Add("COMPLETA");
+                }
+            }
+            catch (Exception e) { }
+            ViewBag.facturacion = lista;
+
+            //var pedido = db.pedido.Where(p => p.cliente.nombre == searchString);
             if (!String.IsNullOrEmpty(searchString))
             {
-                pedido = db.pedido.Include(p => p.cliente).Include(p => p.empleado).Where(p => p.cliente.nombre == searchString && p.estado != "CANCELADO").OrderByDescending(p => p.estado);
+                pedidos = db.pedido.Include(p => p.cliente).Include(p => p.empleado).Where(p => p.cliente.nombre == searchString && p.estado != "CANCELADO").OrderByDescending(p => p.estado);
             }
-            return View(pedido.ToList());
+            return View(pedidos.ToList());
         }
 
         public PartialViewResult detallePedido(string id)
