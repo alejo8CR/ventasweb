@@ -37,9 +37,9 @@ namespace ventasP2Web.Controllers
                     {
                         var sumlineafacturas = db.lineaFactura.Where(l => l.lineaPedido.lineaPedidoID == lp.lineaPedidoID).Sum(l => l.cantidadFacturada);
                         if (sumlineafacturas != null)
-                            sum2 = (int)sumlineafacturas;
+                            sum2 += (int)sumlineafacturas;
                     }
-                    if(sum1==0)
+                    if(sum2==0)
                         lista.Add("VACIA");
                     else if (sum2 < sum1)
                         lista.Add("PARCIALMENTE");

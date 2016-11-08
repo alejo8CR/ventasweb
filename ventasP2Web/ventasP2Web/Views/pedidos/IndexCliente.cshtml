@@ -15,7 +15,7 @@
 </form>
 <br />
 
-<input name="motivo" id="motivo">
+<input type="hidden" name="motivo" id="motivo">
 
 <table class="table">
     <tr>
@@ -71,7 +71,7 @@
             @Html.ActionLink("Detalles", "DetailsCliente", new { id = (item.pedidoID.Replace(" ", string.Empty)) }) |
             @if (item.estado.Replace(" ", string.Empty) == "REVISADO")
             {
-                <a href="@Url.Action("confirmar", new { id = (item.pedidoID.Replace(" ", string.Empty)) })" onclick="myFunction()">CONFIRMAR</a>
+                @Html.ActionLink("CONFIRMAR", "confirmar", new { id = (item.pedidoID.Replace(" ", string.Empty)) })
                 <a href="@Url.Action("rechazar", new { id = (item.pedidoID.Replace(" ", string.Empty)) })" onclick="myFunction()">RECHAZAR</a>
                 <a href="@Url.Action("reprocesar", new { id = (item.pedidoID.Replace(" ", string.Empty)) })" onclick="myFunction()">REPROCESAR</a>
                 <!--@Html.ActionLink("CONFIRMAR", "confirmar", new { id = (item.pedidoID.Replace(" ", string.Empty)) })

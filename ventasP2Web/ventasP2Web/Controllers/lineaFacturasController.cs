@@ -68,9 +68,12 @@ namespace ventasP2Web.Controllers
         {
             try
             {
-                var lp1 = db.lineaPedido.Where(a => a.lineaPedidoID == lineaFactura.lineaPedidoID).FirstOrDefault();
-                if (lp1.cantidad < lineaFactura.cantidadFacturada)
-                    ModelState.AddModelError("cantidadFacturada", "Cantidad a facturar supera la cantidad del pedido");
+                int cantidadFacturada = (int)db.lineaFactura.Where(a => a.lineaPedidoID == lineaFactura.lineaPedidoID).Sum(a => a.cantidadFacturada);
+                int cantidadPedido = (int)db.lineaPedido.Where(a => a.lineaPedidoID == lineaFactura.lineaPedidoID).Select(a =>a.cantidad).First();
+                int cantidadResultante = cantidadPedido - cantidadFacturada;
+
+                if (lineaFactura.cantidadFacturada == 0 || lineaFactura.cantidadFacturada > cantidadResultante)
+                    ModelState.AddModelError("cantidadFacturada", "Cantidad a facturar supera la cantidad restante por facturar de la linea pedido");
             }
             catch (Exception e) { }
             if(lineaFactura.lineaPedidoID==0)
