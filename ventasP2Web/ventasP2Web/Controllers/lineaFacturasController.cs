@@ -219,6 +219,18 @@ namespace ventasP2Web.Controllers
             return RedirectToAction("Index");
         }
 
+        // POST: lineaFacturas/Delete/5
+        [HttpPost, ActionName("Delete2")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed2(int id)
+        {
+
+            lineaFactura lineaFactura = db.lineaFactura.Find(id);
+            db.lineaFactura.Remove(lineaFactura);
+            db.SaveChanges();
+            return RedirectToAction("Index", "facturas", "");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
